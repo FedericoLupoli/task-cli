@@ -36,14 +36,14 @@ export const helpCommand = () => {
       chalk.gray("List pending tasks"),
   );
   console.log(
-    chalk.yellow("  mark-done") +
+    chalk.yellow("  mark done") +
       " " +
       chalk.green("<task_id>") +
       "          " +
       chalk.gray("Mark a task as complete"),
   );
   console.log(
-    chalk.yellow("  mark-in-progress") +
+    chalk.yellow("  mark in-progress") +
       " " +
       chalk.green("<task_id>") +
       "   " +

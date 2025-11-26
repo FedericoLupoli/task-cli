@@ -8,6 +8,7 @@ import { listCommand } from "../src/commands/list.js";
 import { debugCommand } from "../src/commands/debug.js";
 import { updateCommand } from "../src/commands/update.js";
 import { deleteCommand } from "../src/commands/delete.js";
+import { markCommand } from "../src/commands/mark.js";
 
 program.name("task-cli").description("Task Manager CLI").version("1.0.0");
 
@@ -47,6 +48,13 @@ program
   .description("Delete a task by ID")
   .action((id) => {
     deleteCommand(id);
+  });
+
+program
+  .command("mark <status> <id>")
+  .description("Mark a task with a new status")
+  .action((status, id) => {
+    markCommand(status, id);
   });
 
 // DEBUG
