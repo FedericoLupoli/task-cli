@@ -1,6 +1,5 @@
 import chalk from "chalk";
-import fs from "fs";
-import path from "path";
+import { readTasksFromJson, writeTasksToJson } from "../utils/json.utils.js";
 
 export const addCommand = (description) => {
   // returnare un messaggio di errore se la descrizione è vuota
@@ -11,15 +10,8 @@ export const addCommand = (description) => {
     return;
   }
 
-  // controllare se esiste il JSON per il salvataggio dei task
-  const jsonFilePath = path.join(process.cwd(), "src/build/tasks.json");
-  if (!fs.existsSync(jsonFilePath)) {
-    fs.writeFileSync(jsonFilePath, JSON.stringify([]));
-  }
-
-  // leggere l'ultimo task esistente e generare un nuovo id
-  const tasksData = fs.readFileSync(jsonFilePath);
-  const tasks = JSON.parse(tasksData);
+  // leggere i task esistenti
+  const tasks = readTasksFromJson();
   const newTaskId =
     tasks.length > 0 ? String(Number(tasks[tasks.length - 1].id) + 1) : "1";
 
@@ -34,7 +26,7 @@ export const addCommand = (description) => {
 
   // salvare il nuovo task
   tasks.push(newTask);
-  fs.writeFileSync(jsonFilePath, JSON.stringify(tasks, null, 2));
+  writeTasksToJson(tasks);
 
   console.log(chalk.green(`Task aggiunto con successo (ID: ${newTaskId})`));
 };

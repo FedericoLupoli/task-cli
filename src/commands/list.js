@@ -1,17 +1,9 @@
 import chalk from "chalk";
-import fs from "fs";
-import path from "path";
+import { readTasksFromJson } from "../utils/json.utils.js";
 
 export const listCommand = (args) => {
-  // controllare l'esistenza del file JSON
-  const jsonFilePath = path.join(process.cwd(), "src/build/tasks.json");
-  if (!fs.existsSync(jsonFilePath)) {
-    console.log(chalk.red("Nessuna Task Aggiunta"));
-    return;
-  }
-
-  const tasksData = fs.readFileSync(jsonFilePath);
-  const tasks = JSON.parse(tasksData);
+  // leggere i task esistenti
+  const tasks = readTasksFromJson();
 
   // controllare se ci sono task
   if (tasks.length === 0) {
