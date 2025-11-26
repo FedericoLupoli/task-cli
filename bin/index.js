@@ -7,6 +7,7 @@ import { addCommand } from "../src/commands/add.js";
 import { listCommand } from "../src/commands/list.js";
 import { debugCommand } from "../src/commands/debug.js";
 import { updateCommand } from "../src/commands/update.js";
+import { deleteCommand } from "../src/commands/delete.js";
 
 program.name("task-cli").description("Task Manager CLI").version("1.0.0");
 
@@ -38,6 +39,14 @@ program
   .action((id, newDescription) => {
     const args = [id, newDescription];
     updateCommand(...args);
+  });
+
+// Delete Task
+program
+  .command("delete <id>")
+  .description("Delete a task by ID")
+  .action((id) => {
+    deleteCommand(id);
   });
 
 // DEBUG

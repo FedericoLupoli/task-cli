@@ -1,6 +1,6 @@
 [x] Comando ADD
 [x] Comando LIST
-[] Comando UPDATE
-[] Comando DELETE
+[x] Comando UPDATE
+[x] Comando DELETE
 [] Comando MARK
 [x] Comando DEBUG
