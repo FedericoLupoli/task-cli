@@ -5,6 +5,7 @@ import { program } from "commander";
 import { helpCommand } from "../src/commands/help.js";
 import { addCommand } from "../src/commands/add.js";
 import { listCommand } from "../src/commands/list.js";
+import { debugCommand } from "../src/commands/debug.js";
 
 program.name("task-cli").description("Task Manager CLI").version("1.0.0");
 
@@ -28,5 +29,11 @@ program
     }
     listCommand(args);
   });
+
+// DEBUG
+program
+  .command("debug")
+  .description("Debugging information")
+  .action(debugCommand);
 
 program.parse(process.argv);
