@@ -4,9 +4,16 @@
   "description": "Task Manager CLI - roadmap.sh",
   "license": "ISC",
   "author": "Federico Lupoli",
-  "type": "commonjs",
+  "bin": {
+    "task-cli": "./bin/index.js"
+  },
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "commander": "^14.0.2",
+    "inquirer": "^13.0.1"
   }
 }
